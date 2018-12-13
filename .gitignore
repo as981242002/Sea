@@ -262,3 +262,10 @@ __pycache__/
 Sea/Sea.vcxproj
 Sea.sln
 Sea/Sea.vcxproj.filters
+*.config
+*.files
+*.includes
+*.autosave
+*.creator
+/.vscode
+

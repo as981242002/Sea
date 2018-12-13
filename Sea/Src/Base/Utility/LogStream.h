@@ -111,7 +111,7 @@ public:
 	void reset() noexcept { buffer_.reset(); }
 	void clear() noexcept { buffer_.bzero(); };
 	int length() noexcept { return buffer_.length(); };
-	//DeBugº¯Êý
+    //DeBug
 	const char* print() const { return buffer_.data(); }
 private:
 	Buffer buffer_;

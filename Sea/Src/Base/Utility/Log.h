@@ -4,7 +4,7 @@
 #include<fstream>
 #include<iostream>
 #include<time.h>
-#include "..\Utility\LogStream.h"
+#include"LogStream.h"
 
 
 namespace Sea

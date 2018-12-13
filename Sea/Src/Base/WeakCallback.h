@@ -12,13 +12,13 @@ class WeakCallback
 {
 public:
 	WeakCallback(const std::weak_ptr<CLASS>& object,
-				const std::function<void(CLASS*, ARGS...)>& function): object_(object), function_(func)
+                const std::function<void(CLASS*, ARGS...)>& function): object_(object), function_(function)
 	{
 
 	}
 	//default dtor
 
-	void operator()(ARGS&&..args)const  //仿函数模仿
+    void operator()(ARGS&&...args)const  //仿函数模仿
 	{
 		std::shared_ptr<CLASS> ptr(object_.lock());
 		if (ptr)
@@ -33,9 +33,9 @@ private:
 };
 
 template<typename CLASS, typename... ARGS>
-WeakCallback<CLASS, ARGS...> makeWeakCallback(const std::shared_ptr<CLASS>& object, void (CLASS::*function)(ARGS)...)
+WeakCallback<CLASS, ARGS...> makeWeakCallback(const std::shared_ptr<CLASS>& object, void (CLASS::*...function)(ARGS))
 {
-	return WeakCallback<CLASS, ARGS...>(object, function);
+    return WeakCallback<CLASS, ARGS...>(object, function);
 }
 
 template<typename CLASS, typename...ARGS>
