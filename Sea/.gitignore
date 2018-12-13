@@ -1,0 +1,4 @@
+#linux config
+*.config
+*.files
+*.includes

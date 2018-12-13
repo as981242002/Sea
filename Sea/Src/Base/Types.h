@@ -39,7 +39,7 @@ inline  To down_cast(From* f)
 	{
 		implicit_cast<From*, To>(0);
 	}
-#if !defined(NDEBUG) && !define(GOOGLE_PROTOBUF_NO_RTTI)
+#if !defined(NDEBUG) && !defined(GOOGLE_PROTOBUF_NO_RTTI)
 	assert(f == nullptr || dynamic_cast<To>(f) != nullptr);  //debug模式才有用
 #endif
 	return static_cast<To>(f);
