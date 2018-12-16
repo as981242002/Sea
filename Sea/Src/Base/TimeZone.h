@@ -21,7 +21,7 @@ public:
 		return static_cast<bool> (data_);
 	}
 	
-	struct tm toLocalTime(time_t secondsSinceEpoch) const;
+    struct tm toLocalTime(time_t seconds) const;
 	time_t fromLocalTime(const struct tm&) const;
 
 	

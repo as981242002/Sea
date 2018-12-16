@@ -2,7 +2,7 @@
 #define SEA_BASE_BASE_H_
 
 #include<memory.h>
-#include<ctime>
+#include<time.h>
 
 namespace Sea
 {
@@ -12,8 +12,8 @@ static const tm GetNowTime()noexcept
 	time_t nowtime;
 	time(&nowtime);
 
-	tm now;
-	localtime_s(&now, &nowtime);
+    tm now = {0};
+    localtime_r(&nowtime, &now);
 
 	return now;
 }

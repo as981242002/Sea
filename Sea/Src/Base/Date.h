@@ -12,7 +12,7 @@ namespace Sea
 class Date: public Sea::Copyable
 {
 public:
-	Date(int julianDayNumber) :julianDayNumber_(0) {}
+    Date() :julianDayNumber_(0) {}
 	
 	Date(int year, int month, int day);
 	

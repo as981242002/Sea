@@ -268,4 +268,5 @@ Sea/Sea.vcxproj.filters
 *.autosave
 *.creator
 /.vscode
-
+/build-Sea-Desktop_Qt_5_12_0_Clang_64bit-Debug
+/build-Sea-Desktop_Qt_5_12_0_Clang_64bit-Default
