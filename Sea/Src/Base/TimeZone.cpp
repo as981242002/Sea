@@ -353,13 +353,17 @@ tm TimeZone::toUTCTime(time_t secondsSinceEpoch, bool yday)
     return utc;
 }
 
-time_t TimeZone::fromUTCTime(const tm &)
+time_t TimeZone::fromUTCTime(const tm& utc)
 {
-
+    return  fromUTCTime(utc.tm_year + 1900, utc.tm_mon + 1, utc.tm_mday, utc.tm_hour, utc.tm_min, utc.tm_sec);
 }
 
 time_t TimeZone::fromUTCTime(int year, int month, int day, int hour, int minute, int seconds)
 {
+    Date date(year, month, day);
+    int secondsInday = hour * 3600 + minute * 60 + seconds;
+    time_t days = date.julianDayNumber() - Date::kJulianDayOf1970_01_01;
 
+    return  days * kSecondsPerDay + secondsInday;
 }
 

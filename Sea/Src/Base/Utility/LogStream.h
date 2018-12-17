@@ -1,11 +1,11 @@
 #ifndef _UTILITY_LOGSTREAM_H_
 #define _UTILITY_LOGSTREAM_H_
 
-#include<string>
 #include<cassert>
 #include<cstring>
 #include "../NonCopyable.h"
 #include "../Utility/Utility.h"
+#include "../Types.h"
 
 namespace Sea
 {
@@ -38,7 +38,7 @@ public:
 	void reset() noexcept { cur_ = data_; }
 	void bzero() noexcept { Sea::bzero(data_, sizeof(data_)); reset(); }
 
-	std::string tostring() const { return std::string(data_, length()); }
+    std::string toString() const { return std::string(data_, length()); }
 private:
 	char* cur_;
 	char data_[SIZE] = { 0 };
@@ -102,7 +102,7 @@ public:
 
 	self& operator<<(Buffer& buff) noexcept
 	{
-		*this << buff.tostring();
+        *this << buff.toString();
 		return *this;
 	}
 
@@ -112,6 +112,7 @@ public:
 	void clear() noexcept { buffer_.bzero(); };
 	int length() noexcept { return buffer_.length(); };
     //DeBug
+
 	const char* print() const { return buffer_.data(); }
 private:
 	Buffer buffer_;
@@ -135,6 +136,12 @@ private:
 	char buf_[32] = { 0 };
 	int length_;
 };
+
+inline LogStream& operator<<(LogStream& s, const Fmt& fmt)
+{
+    s.append(fmt.data(), fmt.length());
+    return s;
+}
 
 } //namespace Sea
 

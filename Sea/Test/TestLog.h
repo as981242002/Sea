@@ -1,6 +1,6 @@
 #ifndef TESTLOG_H
 #define TESTLOG_H
 
-void testLog();
+int add(int x);
 
 #endif // TESTLOG_H

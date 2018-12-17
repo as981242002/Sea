@@ -1,10 +1,17 @@
 #include <iostream>
 #include "../Sea/Test/TestLog.h"
-
+#include <gtest/gtest.h>
 using namespace std;
 
-int main()
+extern int add(int x);
+TEST(FunTest, HandleZeroInput)
 {
-    testLog();
-    return 0;
+    EXPECT_EQ(1, add(0));
+}
+
+
+int main(int argc, char** argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
