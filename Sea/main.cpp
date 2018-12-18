@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 using namespace std;
 
-extern int add(int x);
+
 TEST(FunTest, HandleZeroInput)
 {
     EXPECT_EQ(1, add(0));

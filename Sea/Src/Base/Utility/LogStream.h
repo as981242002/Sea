@@ -1,5 +1,5 @@
-#ifndef _UTILITY_LOGSTREAM_H_
-#define _UTILITY_LOGSTREAM_H_
+#ifndef UTILITY_LOGSTREAM_H
+#define UTILITY_LOGSTREAM_H
 
 #include<cassert>
 #include<cstring>
@@ -11,8 +11,8 @@ namespace Sea
 {
 namespace Detail
 {
-const int iSmallBufferSize = 2000;
-const int iMaxBufferSize = 2000 * 1000;
+const int iSmallBufferSize = 4000;
+const int iMaxBufferSize = 4000 * 1000;
 
 template<size_t SIZE>
 class FixedBuffer : private NonCopyable
@@ -38,7 +38,7 @@ public:
 	void reset() noexcept { cur_ = data_; }
 	void bzero() noexcept { Sea::bzero(data_, sizeof(data_)); reset(); }
 
-    std::string toString() const { return std::string(data_, length()); }
+        string toString() const { return string(data_, length()); }
 private:
 	char* cur_;
 	char data_[SIZE] = { 0 };
@@ -75,43 +75,44 @@ public:
 	self& operator<<(double v) noexcept;
 	self& operator<<(float v) noexcept
 	{
-		*this << static_cast<double>(v);
+            *this << static_cast<double>(v);
+            return *this;
 	}
 
 	self& operator<<(char v) noexcept
 	{
-		buffer_.append(&v, 1);
+            buffer_.append(&v, 1);
+            return *this;
 	}
 
 	self& operator<<(const char* pstr) noexcept
 	{
-		pstr ? buffer_.append(pstr, strlen(pstr)) : buffer_.append("(null)", 6);
-		return *this;
+            pstr ? buffer_.append(pstr, strlen(pstr)) : buffer_.append("(null)", 6);
+            return *this;
 	}
 
 	self& operator<<(const unsigned char* pstr) noexcept
 	{
-		return operator<<(reinterpret_cast<const char*>(pstr));
+            return operator<<(reinterpret_cast<const char*>(pstr));
 	}
 
 	self& operator<<(const std::string& str) noexcept
 	{
-		buffer_.append(str.c_str(), str.size());
-		return *this;
+            buffer_.append(str.c_str(), str.size());
+            return *this;
 	}
 
 	self& operator<<(Buffer& buff) noexcept
 	{
-        *this << buff.toString();
-		return *this;
+            *this << buff.toString();
+            return *this;
 	}
 
 	void append(const char* pstr, const int len) noexcept { buffer_.append(pstr, len); }
 	const Buffer& buffer() noexcept { return buffer_; }
 	void reset() noexcept { buffer_.reset(); }
-	void clear() noexcept { buffer_.bzero(); };
-	int length() noexcept { return buffer_.length(); };
-    //DeBug
+        void clear() noexcept { buffer_.bzero(); }
+        int length() noexcept { return buffer_.length(); }    //DeBug
 
 	const char* print() const { return buffer_.data(); }
 private:
@@ -130,7 +131,7 @@ public:
 	Fmt(const char* fmt, T val);
 	~Fmt() = default;
 
-	const char* data_() const { return buf_; }
+        const char* data() const { return buf_; }
 	int length() const { return length_; }
 private:
 	char buf_[32] = { 0 };
@@ -145,4 +146,4 @@ inline LogStream& operator<<(LogStream& s, const Fmt& fmt)
 
 } //namespace Sea
 
-#endif // !_UTILITY_LOGSTREAM_H_
+#endif // !UTILITY_LOGSTREAM_H
