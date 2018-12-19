@@ -8,6 +8,10 @@
 
 
 using std::string;
+int add(int x)
+{
+    return x + 1;
+}
 
 TEST(testLogStreamBooleans, bool)
 {
@@ -153,7 +157,7 @@ TEST(testLogStreamFloats, float)
   EXPECT_EQ(buf.toString(), string("0.15"));
   os.reset();
 
-  EXPECT_TRUE(a+b != c);
+  EXPECT_TRUE(a+b - c < 0.00000001);
 
   os << 1.23456789;
   EXPECT_EQ(buf.toString(), string("1.23456789"));

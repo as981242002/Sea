@@ -1,5 +1,5 @@
-#ifndef _UTILITY_LOG_H_
-#define _UTILITY_LOG_H_
+#ifndef UTILITY_LOG_H
+#define UTILITY_LOG_H
 
 #include<fstream>
 #include<iostream>
@@ -10,15 +10,9 @@
 namespace Sea
 {
 
-inline LogStream& operator<<(LogStream& s, const Fmt& fmt) noexcept
-{
-	s.append(fmt.data_(), fmt.length());
-	return s;
-}
-
 LogStream& operator<<(LogStream& os, const tm& time) noexcept;
 
 }
 
-#endif // !_UTILITY_LOG_H_
+#endif // !UTILITY_LOG_H
 
