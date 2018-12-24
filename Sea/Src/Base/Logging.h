@@ -3,6 +3,7 @@
 
 #include "../Base/Utility/LogStream.h"
 #include "TimeZone.h"
+#include "Timestamp.h"
 
 namespace Sea
 {
@@ -80,7 +81,7 @@ private:
 
         void finsh();
 
-        Timestamap time_;
+        Timestamp time_;
         LogStream stream_;
         LogLevel level_;
         int line_;
