@@ -6,6 +6,10 @@ set(base_SRCS
     ../Src/Base/Date.cpp
     ../Src/Base/TimeZone.cpp
     ../Src/Base/FileUtil.cpp
+    ../Src/Base/Logging.cpp
+    ../Src/Base/Timestamp.cpp
+    ../Src/Base/Exception.cpp
+    ../Src/Base/CurrentThread.cpp
 )
 
 add_library(sea_base STATIC ${base_SRCS})

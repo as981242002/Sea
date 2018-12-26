@@ -1,0 +1,11 @@
+#include "Exception.h"
+#include "CurrentThread.h"
+
+namespace Sea
+{
+
+Exception::Exception(string msg):message_(std::move(msg)), stack_(CurrentThread::stackTrace(false))
+{
+
+}
+} //namespace Sea
