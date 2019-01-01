@@ -129,6 +129,17 @@ void lock() ACQUIRE()
 
 }
 
+void unlock() RELEASE()
+{
+    unassignHolder();
+    MCHECK(pthread_mutex_unlock(&mutex_));
+}
+
+pthread_mutex_t* getPthreadMutex()
+{
+    return &mutex_;
+}
+
 private:
     friend class Condition;
 class UnassignGuard : NonCopyable
