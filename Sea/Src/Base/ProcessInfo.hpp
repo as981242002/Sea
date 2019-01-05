@@ -14,21 +14,28 @@ namespace Sea
 namespace ProcessInfo
 {
 
-pid_t fid();
+pid_t pid();
 
 string pidString();
 
 uid_t uid();
 
 string username();
+
 uid_t euid();
+
 Timestamp startTime();
+
 int clockTickPerSecond();
+
 int pageSize();
+
 bool isDebugBuild();
 
 string hostname();
+
 string procname();
+
 StringPiece procname(const string& stat);
 
 string procStatus();
@@ -40,6 +47,7 @@ string procStat();
 string exePath();
 
 int openedFiles();
+
 int maxOpenFiles();
 
 struct CpuTime
@@ -50,6 +58,8 @@ struct CpuTime
     CpuTime():userSeconds(0.0), systemSeconds(0.0)
     {}
 };
+
+CpuTime cpuTime();
 
 int numThreads();
 std::vector<pid_t> threads();
