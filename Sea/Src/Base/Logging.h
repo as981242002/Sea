@@ -99,24 +99,24 @@ inline Logger::Enum_LogLevel Logger::logLevel()
 }
 
 #define LOG_TRACE if (Sea::Logger::logLevel() <= Sea::Logger::TRACE) \
-    Sea::Logger(_FILE_, _LINE_, Sea::Logger::TRACE, _func_).stream()
+    Sea::Logger(__FILE__,  __LINE__, Sea::Logger::TRACE, _func_).stream()
 
 #define LOG_DEBUG if (Sea::Logger::logLevel() <= Sea::Logger::DEBUG) \
-    Sea::Logger(_FILE_, _LINE_, Sea::Logger::DEBUG, _func_).stream()
+    Sea::Logger(__FILE__,  __LINE__, Sea::Logger::DEBUG, _func_).stream()
 
 #define LOG_INFO if (Sea::Logger::logLevel() <= Sea::Logger::INFO) \
-    Sea::Logger(_FILE_, _LINE_).stream()
+    Sea::Logger(__FILE__,  __LINE__).stream()
 
-#define LOG_WARN Sea::Logger(_FILE_,_LINE_, Sea::Logger::WARN).stream()
-#define LOG_ERROR Sea::Logger(_FILE_,_LINE_, Sea::Logger::ERROR).stream()
-#define LOG_FATAL Sea::Logger(_FILE_,_LINE_, Sea::Logger::FATAL).stream()
-#define LOG_SYSERR Sea::Logger(_FILE_,_LINE_, false).stream()
-#define LOG_SYSFATAL Sea::Logger(_FILE_,_LINE_, true).stream()
+#define LOG_WARN Sea::Logger(__FILE__, __LINE__, Sea::Logger::WARN).stream()
+#define LOG_ERROR Sea::Logger(__FILE__, __LINE__, Sea::Logger::ERROR).stream()
+#define LOG_FATAL Sea::Logger(__FILE__, __LINE__, Sea::Logger::FATAL).stream()
+#define LOG_SYSERR Sea::Logger(__FILE__, __LINE__, false).stream()
+#define LOG_SYSFATAL Sea::Logger(__FILE__, __LINE__, true).stream()
 
 const char* strerror_tl(int savedErrno);
 
 #define CHECK_NOTNULL(val) \
-    ::Sea::CheckNotNull(_FILE_, _LINE_, "'"  #val "'  Must be non NULL", (val))
+    ::Sea::CheckNotNull(__FILE__,  __LINE__, "'"  #val "'  Must be non NULL", (val))
 
 template<typename T>
 T* CheckNotNull(Logger::SourceFile file, int line, const char* names, T* ptr)

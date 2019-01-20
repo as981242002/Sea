@@ -160,7 +160,7 @@ void Thread::start()
     {
         started_ = false;
         delete  data;
-       // LOG_SYSFATAL << "failed in pthread_create";
+        LOG_SYSFATAL << "failed in pthread_create";
     }
     else
     {
